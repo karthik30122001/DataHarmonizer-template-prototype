@@ -1,0 +1,130 @@
+id: https://example.com/StudySchema
+name: StudySchema
+description: A schema for managing metagenomic study metadata
+version: "1.0.0"
+in_language:
+  - en
+imports:
+  - "linkml:types"
+prefixes:
+  linkml: "https://w3id.org/linkml/"
+classes:
+  dh_interface:
+    name: dh_interface
+    description: 'A DataHarmonizer interface'
+  study:
+    name: study
+    description: A sequencing study
+    is_a: dh_interface
+slots:
+  study_id:
+    name: study_id
+    description: schema.org Identifier for the study
+    range: string
+    
+  study_title:
+    name: study_title
+    description: Brief sequencing study description
+    range: string
+    
+  study_description:
+    name: study_description
+    description: Detailed sequencing study description
+    range: string
+    
+  center_name:
+    name: center_name
+    description: Submitting institution or organization name
+    range: string
+    
+  first_created:
+    name: first_created
+    description: Date when the study was created
+    range: date
+    
+  author_name:
+    name: author_name
+    description: Name of study contact person
+    range: string
+    
+  author_email:
+    name: author_email
+    description: Email of study contact person
+    range: string
+    
+  study_alias:
+    name: study_alias
+    description: Submitter's unique identifier for the study
+    range: string
+    
+  broker_name:
+    name: broker_name
+    description: Organization or individual acting as broker
+    range: string
+    
+  status:
+    name: status
+    description: Status of the study (public, private)
+    range: StatusMenu
+    
+  biome_identifier:
+    name: biome_identifier
+    description: Identifier from ontology, with reference to the ontology URL
+    range: string
+    
+  samples_count:
+    name: samples_count
+    description: Number of samples in the study
+    range: integer
+    
+  last_update:
+    name: last_update
+    description: Last updated date of the study
+    range: datetime
+    
+  public_release_date:
+    name: public_release_date
+    description: Intended public release date of the study
+    range: date
+    
+  related_publications:
+    name: related_publications
+    description: Link to publications related to the study
+    range: url
+    
+  related_geocoordinates:
+    name: related_geocoordinates
+    description: Link to geocoordinate data
+    range: string
+    
+  related_studies:
+    name: related_studies
+    description: Link to other related studies
+    range: string
+    
+enums: {}
+types:
+  WhitespaceMinimizedString:
+    name: 'WhitespaceMinimizedString'
+    typeof: string
+    description: 'A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces. Whitespace includes #x9 (tab), #xA (linefeed), and #xD (carriage return).'
+    base: str
+    uri: xsd:token
+  string:
+    name: string
+    base: str
+  integer:
+    name: integer
+    base: int
+  datetime:
+    name: datetime
+    base: datetime
+  date:
+    name: date
+    base: date
+  url:
+    name: url
+    base: str
+settings:
+  Title_Case: "(((?<=\\b)[^a-z\\W]\\w*?|[\\W])+)"
+

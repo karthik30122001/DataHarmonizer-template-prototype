@@ -1,0 +1,1069 @@
+{
+  "name": "StudySchema",
+  "description": "A schema for managing metagenomic study metadata",
+  "in_language": "['en']",
+  "id": "https://example.com/StudySchema",
+  "version": "1.0.0",
+  "prefixes": {
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    }
+  },
+  "default_prefix": "https://example.com/StudySchema/",
+  "types": {
+    "string": {
+      "name": "string",
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str"
+    },
+    "integer": {
+      "name": "integer",
+      "from_schema": "https://example.com/StudySchema",
+      "base": "int"
+    },
+    "datetime": {
+      "name": "datetime",
+      "from_schema": "https://example.com/StudySchema",
+      "base": "datetime"
+    },
+    "date": {
+      "name": "date",
+      "from_schema": "https://example.com/StudySchema",
+      "base": "date"
+    },
+    "url": {
+      "name": "url",
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    },
+    "float": {
+      "name": "float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:float"
+    },
+    "double": {
+      "name": "double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:double"
+    },
+    "decimal": {
+      "name": "decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "xsd:decimal"
+    },
+    "time": {
+      "name": "time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "xsd:time",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
+      "repr": "str"
+    },
+    "uriorcurie": {
+      "name": "uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "URIorCURIE",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "curie": {
+      "name": "curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "Curie",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "uri": {
+      "name": "uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "ncname": {
+      "name": "ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "NCName",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "objectidentifier": {
+      "name": "objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "ElementIdentifier",
+      "uri": "shex:iri",
+      "repr": "str"
+    },
+    "nodeidentifier": {
+      "name": "nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "NodeIdentifier",
+      "uri": "shex:nonLiteral",
+      "repr": "str"
+    },
+    "jsonpointer": {
+      "name": "jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "jsonpath": {
+      "name": "jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "sparqlpath": {
+      "name": "sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://example.com/StudySchema",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    }
+  },
+  "enums": {
+    "StatusMenu": {
+      "name": "StatusMenu",
+      "title": "sequence submitted by menu",
+      "from_schema": "https://example.com/StudySchema",
+      "permissible_values": {
+        "Public": {
+          "text": "Public"
+        },
+        "Private": {
+          "text": "Private"
+        }
+      }
+    }
+  },
+  "slots": {
+    "study_id": {
+      "name": "study_id",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string",
+      "required": true
+    },
+    "study_title": {
+      "name": "study_title",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string",
+      "required": true
+    },
+    "study_description": {
+      "name": "study_description",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string",
+      "required": true
+    },
+    "center_name": {
+      "name": "center_name",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string",
+      "required": true
+    },
+    "first_created": {
+      "name": "first_created",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "date",
+      "required": true
+    },
+    "author_name": {
+      "name": "author_name",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "author_email": {
+      "name": "author_email",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "study_alias": {
+      "name": "study_alias",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "broker_name": {
+      "name": "broker_name",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "status": {
+      "name": "status",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "StatusMenu"
+    },
+    "biome_identifier": {
+      "name": "biome_identifier",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "samples_count": {
+      "name": "samples_count",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "integer"
+    },
+    "last_update": {
+      "name": "last_update",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "datetime"
+    },
+    "public_release_date": {
+      "name": "public_release_date",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "date"
+    },
+    "related_publications": {
+      "name": "related_publications",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "url"
+    },
+    "related_geocoordinates": {
+      "name": "related_geocoordinates",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    },
+    "related_studies": {
+      "name": "related_studies",
+      "from_schema": "https://example.com/StudySchema",
+      "domain_of": [
+        "study"
+      ],
+      "range": "string"
+    }
+  },
+  "classes": {
+    "dh_interface": {
+      "name": "dh_interface",
+      "description": "A DataHarmonizer interface",
+      "from_schema": "https://example.com/StudySchema"
+    },
+    "study": {
+      "name": "study",
+      "description": "A sequencing study",
+      "from_schema": "https://example.com/StudySchema",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "study_id": {
+          "name": "study_id",
+          "title": "study_id",
+          "comments": [
+            "The unique identifier for the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"S1234\""
+            }
+          ],
+          "rank": 1,
+          "identifier": true,
+          "slot_group": "Study Identifiers",
+          "recommended": true
+        },
+        "study_title": {
+          "name": "study_title",
+          "title": "study_title",
+          "comments": [
+            "Brief description of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"Marine Sequencing\""
+            }
+          ],
+          "rank": 2,
+          "slot_group": "Study Information",
+          "recommended": true
+        },
+        "study_description": {
+          "name": "study_description",
+          "title": "study_description",
+          "comments": [
+            "A detailed description of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"This study focuses on the sequencing of the Marine samples.\""
+            }
+          ],
+          "rank": 3,
+          "slot_group": "Study Information",
+          "recommended": true
+        },
+        "center_name": {
+          "name": "center_name",
+          "title": "center_name",
+          "comments": [
+            "Name of the submitting institution or organization."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ University\""
+            }
+          ],
+          "rank": 4,
+          "slot_group": "Study Identifiers",
+          "recommended": true
+        },
+        "first_created": {
+          "name": "first_created",
+          "title": "first_created",
+          "comments": [
+            "The date when the study was created."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-01-01\""
+            }
+          ],
+          "rank": 5,
+          "slot_group": "Study Dates",
+          "recommended": true
+        },
+        "author_name": {
+          "name": "author_name",
+          "title": "author_name",
+          "comments": [
+            "Name of the study contact person."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"Dr. John Doe\""
+            }
+          ],
+          "rank": 6,
+          "slot_group": "Study Contacts",
+          "recommended": true
+        },
+        "author_email": {
+          "name": "author_email",
+          "title": "author_email",
+          "comments": [
+            "Email of the study contact person."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"jdoe@example.com\""
+            }
+          ],
+          "rank": 7,
+          "slot_group": "Study Contacts",
+          "recommended": true,
+          "pattern": "^\\S+@\\S+\\.\\S+$"
+        },
+        "study_alias": {
+          "name": "study_alias",
+          "title": "study_alias",
+          "comments": [
+            "Submitter's unique identifier for the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ123\""
+            }
+          ],
+          "rank": 8,
+          "slot_group": "Study Identifiers",
+          "recommended": true
+        },
+        "broker_name": {
+          "name": "broker_name",
+          "title": "broker_name",
+          "comments": [
+            "Broker acting on behalf of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ Broker\""
+            }
+          ],
+          "rank": 9,
+          "slot_group": "Study Broker",
+          "recommended": true
+        },
+        "status": {
+          "name": "status",
+          "title": "status",
+          "examples": [
+            {
+              "value": "Study status (e.g., public or private)."
+            }
+          ],
+          "exact_mappings": [
+            "SOMEWHERE:Example%3A%20%22public%22"
+          ],
+          "rank": 10,
+          "slot_group": "Study Status",
+          "recommended": true
+        },
+        "biome_identifier": {
+          "name": "biome_identifier",
+          "title": "biome_identifier",
+          "comments": [
+            "Identifier from an ontology."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"ENVO:001\""
+            }
+          ],
+          "rank": 11,
+          "slot_group": "Study Identifiers",
+          "recommended": true
+        },
+        "samples_count": {
+          "name": "samples_count",
+          "title": "samples_count",
+          "comments": [
+            "Number of samples in the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"250\""
+            }
+          ],
+          "rank": 12,
+          "slot_group": "Study Samples",
+          "recommended": true
+        },
+        "last_update": {
+          "name": "last_update",
+          "title": "last_update",
+          "comments": [
+            "Last update date of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-12-01T14:30:00\""
+            }
+          ],
+          "rank": 13,
+          "slot_group": "Study Dates",
+          "recommended": true
+        },
+        "public_release_date": {
+          "name": "public_release_date",
+          "title": "public_release_date",
+          "comments": [
+            "Intended public release date."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-06-01\""
+            }
+          ],
+          "rank": 14,
+          "slot_group": "Study Dates",
+          "recommended": true
+        },
+        "related_publications": {
+          "name": "related_publications",
+          "title": "related_publications",
+          "comments": [
+            "Link to related publications."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://pubmed.ncbi.nlm.nih.gov/1234567\""
+            }
+          ],
+          "rank": 15,
+          "slot_group": "Study References",
+          "recommended": true
+        },
+        "related_geocoordinates": {
+          "name": "related_geocoordinates",
+          "title": "related_geocoordinates",
+          "comments": [
+            "Link to geocoordinate data."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://example.com/geocoordinate\""
+            }
+          ],
+          "rank": 16,
+          "slot_group": "Study References",
+          "recommended": true
+        },
+        "related_studies": {
+          "name": "related_studies",
+          "title": "related_studies",
+          "comments": [
+            "Link to related studies."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://relatedstudy.com\""
+            }
+          ],
+          "rank": 17,
+          "slot_group": "Study References",
+          "recommended": true
+        }
+      },
+      "attributes": {
+        "study_id": {
+          "name": "study_id",
+          "title": "study_id",
+          "comments": [
+            "The unique identifier for the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"S1234\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 1,
+          "identifier": true,
+          "alias": "study_id",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Identifiers",
+          "range": "string",
+          "required": true,
+          "recommended": true
+        },
+        "study_title": {
+          "name": "study_title",
+          "title": "study_title",
+          "comments": [
+            "Brief description of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"Marine Sequencing\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 2,
+          "alias": "study_title",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Information",
+          "range": "string",
+          "required": true,
+          "recommended": true
+        },
+        "study_description": {
+          "name": "study_description",
+          "title": "study_description",
+          "comments": [
+            "A detailed description of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"This study focuses on the sequencing of the Marine samples.\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 3,
+          "alias": "study_description",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Information",
+          "range": "string",
+          "required": true,
+          "recommended": true
+        },
+        "center_name": {
+          "name": "center_name",
+          "title": "center_name",
+          "comments": [
+            "Name of the submitting institution or organization."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ University\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 4,
+          "alias": "center_name",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Identifiers",
+          "range": "string",
+          "required": true,
+          "recommended": true
+        },
+        "first_created": {
+          "name": "first_created",
+          "title": "first_created",
+          "comments": [
+            "The date when the study was created."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-01-01\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 5,
+          "alias": "first_created",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Dates",
+          "range": "date",
+          "required": true,
+          "recommended": true
+        },
+        "author_name": {
+          "name": "author_name",
+          "title": "author_name",
+          "comments": [
+            "Name of the study contact person."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"Dr. John Doe\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 6,
+          "alias": "author_name",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Contacts",
+          "range": "string",
+          "recommended": true
+        },
+        "author_email": {
+          "name": "author_email",
+          "title": "author_email",
+          "comments": [
+            "Email of the study contact person."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"jdoe@example.com\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 7,
+          "alias": "author_email",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Contacts",
+          "range": "string",
+          "recommended": true,
+          "pattern": "^\\S+@\\S+\\.\\S+$"
+        },
+        "study_alias": {
+          "name": "study_alias",
+          "title": "study_alias",
+          "comments": [
+            "Submitter's unique identifier for the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ123\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 8,
+          "alias": "study_alias",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Identifiers",
+          "range": "string",
+          "recommended": true
+        },
+        "broker_name": {
+          "name": "broker_name",
+          "title": "broker_name",
+          "comments": [
+            "Broker acting on behalf of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"XYZ Broker\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 9,
+          "alias": "broker_name",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Broker",
+          "range": "string",
+          "recommended": true
+        },
+        "status": {
+          "name": "status",
+          "title": "status",
+          "examples": [
+            {
+              "value": "Study status (e.g., public or private)."
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "exact_mappings": [
+            "SOMEWHERE:Example%3A%20%22public%22"
+          ],
+          "rank": 10,
+          "alias": "status",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Status",
+          "range": "StatusMenu",
+          "recommended": true
+        },
+        "biome_identifier": {
+          "name": "biome_identifier",
+          "title": "biome_identifier",
+          "comments": [
+            "Identifier from an ontology."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"ENVO:001\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 11,
+          "alias": "biome_identifier",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Identifiers",
+          "range": "string",
+          "recommended": true
+        },
+        "samples_count": {
+          "name": "samples_count",
+          "title": "samples_count",
+          "comments": [
+            "Number of samples in the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"250\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 12,
+          "alias": "samples_count",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Samples",
+          "range": "integer",
+          "recommended": true
+        },
+        "last_update": {
+          "name": "last_update",
+          "title": "last_update",
+          "comments": [
+            "Last update date of the study."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-12-01T14:30:00\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 13,
+          "alias": "last_update",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Dates",
+          "range": "datetime",
+          "recommended": true
+        },
+        "public_release_date": {
+          "name": "public_release_date",
+          "title": "public_release_date",
+          "comments": [
+            "Intended public release date."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"2023-06-01\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 14,
+          "alias": "public_release_date",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study Dates",
+          "range": "date",
+          "recommended": true
+        },
+        "related_publications": {
+          "name": "related_publications",
+          "title": "related_publications",
+          "comments": [
+            "Link to related publications."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://pubmed.ncbi.nlm.nih.gov/1234567\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 15,
+          "alias": "related_publications",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study References",
+          "range": "url",
+          "recommended": true
+        },
+        "related_geocoordinates": {
+          "name": "related_geocoordinates",
+          "title": "related_geocoordinates",
+          "comments": [
+            "Link to geocoordinate data."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://example.com/geocoordinate\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 16,
+          "alias": "related_geocoordinates",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study References",
+          "range": "string",
+          "recommended": true
+        },
+        "related_studies": {
+          "name": "related_studies",
+          "title": "related_studies",
+          "comments": [
+            "Link to related studies."
+          ],
+          "examples": [
+            {
+              "value": "Example: \"http://relatedstudy.com\""
+            }
+          ],
+          "from_schema": "https://example.com/StudySchema",
+          "rank": 17,
+          "alias": "related_studies",
+          "owner": "study",
+          "domain_of": [
+            "study"
+          ],
+          "slot_group": "Study References",
+          "range": "string",
+          "recommended": true
+        }
+      }
+    }
+  },
+  "settings": {
+    "Title_Case": {
+      "setting_key": "Title_Case",
+      "setting_value": "(((?<=\\b)[^a-z\\W]\\w*?|[\\W])+)"
+    }
+  },
+  "@type": "SchemaDefinition"
+}

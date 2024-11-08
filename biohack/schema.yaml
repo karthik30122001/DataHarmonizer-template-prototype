@@ -1,0 +1,260 @@
+id: https://example.com/StudySchema
+name: StudySchema
+description: A schema for managing metagenomic study metadata
+version: 1.0.0
+in_language:
+- en
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+classes:
+  dh_interface:
+    name: dh_interface
+    description: A DataHarmonizer interface
+  study:
+    name: study
+    description: A sequencing study
+    is_a: dh_interface
+    slots:
+    - study_id
+    - study_title
+    - study_description
+    - center_name
+    - first_created
+    - author_name
+    - author_email
+    - study_alias
+    - broker_name
+    - status
+    - biome_identifier
+    - samples_count
+    - last_update
+    - public_release_date
+    - related_publications
+    - related_geocoordinates
+    - related_studies
+    slot_usage:
+      study_id:
+        rank: 1
+        slot_group: Study Identifiers
+        title: study_id
+        identifier: true
+        recommended: true
+        comments: The unique identifier for the study.
+        examples:
+        - value: 'Example: "S1234"'
+      study_title:
+        rank: 2
+        slot_group: Study Information
+        title: study_title
+        recommended: true
+        comments: Brief description of the study.
+        examples:
+        - value: 'Example: "Marine Sequencing"'
+      study_description:
+        rank: 3
+        slot_group: Study Information
+        title: study_description
+        recommended: true
+        comments: A detailed description of the study.
+        examples:
+        - value: 'Example: "This study focuses on the sequencing of the Marine samples."'
+      center_name:
+        rank: 4
+        slot_group: Study Identifiers
+        title: center_name
+        recommended: true
+        comments: Name of the submitting institution or organization.
+        examples:
+        - value: 'Example: "XYZ University"'
+      first_created:
+        rank: 5
+        slot_group: Study Dates
+        title: first_created
+        recommended: true
+        comments: The date when the study was created.
+        examples:
+        - value: 'Example: "2023-01-01"'
+      author_name:
+        rank: 6
+        slot_group: Study Contacts
+        title: author_name
+        recommended: true
+        comments: Name of the study contact person.
+        examples:
+        - value: 'Example: "Dr. John Doe"'
+      author_email:
+        rank: 7
+        slot_group: Study Contacts
+        title: author_email
+        recommended: true
+        pattern: ^\S+@\S+\.\S+$
+        comments: Email of the study contact person.
+        examples:
+        - value: 'Example: "jdoe@example.com"'
+      study_alias:
+        rank: 8
+        slot_group: Study Identifiers
+        title: study_alias
+        recommended: true
+        comments: Submitter's unique identifier for the study.
+        examples:
+        - value: 'Example: "XYZ123"'
+      broker_name:
+        rank: 9
+        slot_group: Study Broker
+        title: broker_name
+        recommended: true
+        comments: Broker acting on behalf of the study.
+        examples:
+        - value: 'Example: "XYZ Broker"'
+      status:
+        rank: 10
+        slot_group: Study Status
+        title: status
+        recommended: true
+        examples:
+        - value: Study status (e.g., public or private).
+        exact_mappings:
+        - SOMEWHERE:Example%3A%20%22public%22
+      biome_identifier:
+        rank: 11
+        slot_group: Study Identifiers
+        title: biome_identifier
+        recommended: true
+        comments: Identifier from an ontology.
+        examples:
+        - value: 'Example: "ENVO:001"'
+      samples_count:
+        rank: 12
+        slot_group: Study Samples
+        title: samples_count
+        recommended: true
+        comments: Number of samples in the study.
+        examples:
+        - value: 'Example: "250"'
+      last_update:
+        rank: 13
+        slot_group: Study Dates
+        title: last_update
+        recommended: true
+        comments: Last update date of the study.
+        examples:
+        - value: 'Example: "2023-12-01T14:30:00"'
+      public_release_date:
+        rank: 14
+        slot_group: Study Dates
+        title: public_release_date
+        recommended: true
+        comments: Intended public release date.
+        examples:
+        - value: 'Example: "2023-06-01"'
+      related_publications:
+        rank: 15
+        slot_group: Study References
+        title: related_publications
+        recommended: true
+        comments: Link to related publications.
+        examples:
+        - value: 'Example: "http://pubmed.ncbi.nlm.nih.gov/1234567"'
+      related_geocoordinates:
+        rank: 16
+        slot_group: Study References
+        title: related_geocoordinates
+        recommended: true
+        comments: Link to geocoordinate data.
+        examples:
+        - value: 'Example: "http://example.com/geocoordinate"'
+      related_studies:
+        rank: 17
+        slot_group: Study References
+        title: related_studies
+        recommended: true
+        comments: Link to related studies.
+        examples:
+        - value: 'Example: "http://relatedstudy.com"'
+slots:
+  study_id:
+    name: study_id
+    range: string
+    required: true
+  study_title:
+    name: study_title
+    range: string
+    required: true
+  study_description:
+    name: study_description
+    range: string
+    required: true
+  center_name:
+    name: center_name
+    range: string
+    required: true
+  first_created:
+    name: first_created
+    range: date
+    required: true
+  author_name:
+    name: author_name
+    range: string
+  author_email:
+    name: author_email
+    range: string
+  study_alias:
+    name: study_alias
+    range: string
+  broker_name:
+    name: broker_name
+    range: string
+  status:
+    name: status
+    range: StatusMenu
+  biome_identifier:
+    name: biome_identifier
+    range: string
+  samples_count:
+    name: samples_count
+    range: integer
+  last_update:
+    name: last_update
+    range: datetime
+  public_release_date:
+    name: public_release_date
+    range: date
+  related_publications:
+    name: related_publications
+    range: url
+  related_geocoordinates:
+    name: related_geocoordinates
+    range: string
+  related_studies:
+    name: related_studies
+    range: string
+enums:
+  StatusMenu:
+    name: StatusMenu
+    title: sequence submitted by menu
+    permissible_values:
+      Public:
+        text: Public
+      Private:
+        text: Private
+types:
+  string:
+    name: string
+    base: str
+  integer:
+    name: integer
+    base: int
+  datetime:
+    name: datetime
+    base: datetime
+  date:
+    name: date
+    base: date
+  url:
+    name: url
+    base: str
+settings:
+  Title_Case: (((?<=\b)[^a-z\W]\w*?|[\W])+)
